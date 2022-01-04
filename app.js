@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config();
 const port = process.env.PORT || 5002;
 const path = require("path");
 var bodyParser = require("body-parser");
@@ -33,15 +34,15 @@ app.post("/formPost", (req, res) => {
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "ramaiah.m@spritle.com",
-        pass: "73588Ram@",
+        user: process.env.EMAIL,
+        pass: process.env.PASSWORD,
       },
     });
 
     var mailOptions = {
       from: "ramaiah.m@spritle.com",
       to: "rameshmariappan.m@gmail.com",
-      subject: "Sending Email using Node.js",
+      subject: "Form was Filled",
       text: `Name : ${formvalue.fname} \nCompany Name: ${formvalue.company_name} \nEmail: ${formvalue.email_address} \nPhone no: ${formvalue.phone_number} \nMessage: ${formvalue.comment}`,
     };
 

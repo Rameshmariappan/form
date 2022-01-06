@@ -2,14 +2,14 @@ const express = require("express");
 require("dotenv").config();
 const port = process.env.PORT || 5002;
 const path = require("path");
-var bodyParser = require("body-parser");
+// var bodyParser = require("body-parser");
 var formvalue = "";
 var stri = "";
 const app = express(); //instance for express
 var nodemailer = require("nodemailer");
 //api middleware
 app.use(express.json());
-app.use(express.urlencoded());
+// app.use(express.urlencoded());
 app.use(
   "/css",
   express.static(path.join(__dirname, "node_modules/bootstrap/dist/css"))
@@ -57,6 +57,10 @@ app.post("/formPost", (req, res) => {
   } catch (err) {
     res.status(404).send(err);
   }
+});
+
+app.post("/test", (req, res) => {
+  console.log(req.body);
 });
 
 app.listen(port, () => {

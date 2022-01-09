@@ -22,6 +22,7 @@ app.use(
   "/js",
   express.static(path.join(__dirname, "node_modules/jquery/dist"))
 );
+app.use(express.static(__dirname + "/public"));
 //api routes
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
@@ -65,5 +66,5 @@ app.post("/test", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`server started at ${port}`);
+  console.log("server started at http://localhost:" + port);
 });

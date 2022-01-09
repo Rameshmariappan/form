@@ -1,6 +1,6 @@
 const express = require("express");
 require("dotenv").config();
-const port = process.env.PORT || 5002;
+const port = process.env.PORT || 5000;
 const path = require("path");
 // var bodyParser = require("body-parser");
 var formvalue = "";
@@ -23,7 +23,7 @@ app.use(
   express.static(path.join(__dirname, "node_modules/jquery/dist"))
 );
 //api routes
-app.get("/form", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 app.post("/formPost", (req, res) => {
